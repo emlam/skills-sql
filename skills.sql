@@ -83,6 +83,13 @@ WHERE Models.year=1960;
     --     ON b.name = m.brand_name
     -- WHERE b.discontinued IS NULL;
 
+SELECT b.name, m.name,b.discontinued
+FROM Models as m
+JOIN brands as b
+ON b.name=m.brand_name
+WHERE b.discontinued IS NULL;
+
+
 -- 2. Modify this left join so it only selects models that have brands in the Brands table.
 -- before: 
     -- SELECT m.name,
@@ -95,6 +102,17 @@ WHERE Models.year=1960;
 -- followup question: In your own words, describe the difference between 
 -- left joins and inner joins.
 
+SELECT b.name,m.brand_name
+FROM Brands AS b
+LEFT JOIN Models as m
+ON m.brand_name = b.name;
+
+-- Left joins are used to return results from the left tables and rows matched from the
+-- right table.
+
+-- Inner Joins are used to return results that are found 
+-- in both the left and right tables. 
+
 -- 3. Modify the query so that it only selects brands that don't have any models in the models table. 
 -- (Hint: it should only show Tesla's row.)
 -- before: 
@@ -104,6 +122,12 @@ WHERE Models.year=1960;
     --   LEFT JOIN Models
     --     ON brands.name = Models.brand_name
     -- WHERE Models.year > 1940;
+
+
+    SELECT brands.name,Models.brand_name
+    FROM Brands LEFT JOIN models
+    ON Brands.name=Models.brand_name
+    WHERE Models.brand_name IS NULL;
 
 -- 4. Modify the query to add another column to the results to show 
 -- the number of years from the year of the model until the brand becomes discontinued
