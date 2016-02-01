@@ -34,11 +34,26 @@ ASC LIMIT 3;
 
 -- 6. Count the Ford models in the database (output should be a number).
 
+SELECT COUNT(*)
+FROM Models
+WHERE brand_name='Ford';
+
 
 
 -- 7. Select the name of any and all car brands that are not discontinued.
 
+SELECT Models.brand_name, Models.name,Brands.discontinued
+FROM Models
+JOIN Brands
+WHERE Brands.discontinued IS NULL;
+
 -- 8. Select rows 15-25 of the DB in alphabetical order by model name.
+
+SELECT * FROM models
+ORDER BY name ASC
+LIMIT 10 
+OFFSET 14;
+
 
 -- 9. Select the brand, name, and year the model's brand was 
 --    founded for all of the models from 1960. Include row(s)
@@ -46,6 +61,11 @@ ASC LIMIT 3;
 --    (The year the brand was founded should be NULL if 
 --    the brand is not in the Brands table.)
 
+SELECT Models.brand_name, Models.name, Models.year
+FROM Models
+JOIN Brands
+ON Models.brand_name=Brands.name
+WHERE Models.year=1960;
 
 
 -- Part 2: Change the following queries according to the specifications. 
