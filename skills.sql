@@ -2,20 +2,39 @@
 -- for the most explanatory version of each question.
 
 -- 1. Select all columns for all brands in the Brands table.
+SELECT * FROM brands;
 
 -- 2. Select all columns for all car models made by Pontiac in the Models table.
+SELECT * FROM models WHERE brand_name = 'Pontiac';
+
 
 -- 3. Select the brand name and model 
 --    name for all models made in 1964 from the Models table.
+SELECT * FROM models WHERE year = '1964';
 
 
 -- 4. Select the model name, brand name, and headquarters for the Ford Mustang 
 --    from the Models and Brands tables.
 
+SELECT Models.brand_name, Models.name,Brands.headquarters
+FROM Models
+JOIN Brands 
+ON Models.brand_name=Brands.name
+WHERE Models.brand_name='Ford' AND Models.name='Mustang';
+
+
+
 -- 5. Select all rows for the three oldest brands 
 --    from the Brands table (Hint: you can use LIMIT and ORDER BY).
 
+SELECT * FROM brands
+ORDER BY founded
+ASC LIMIT 3;
+
+
 -- 6. Count the Ford models in the database (output should be a number).
+
+
 
 -- 7. Select the name of any and all car brands that are not discontinued.
 
